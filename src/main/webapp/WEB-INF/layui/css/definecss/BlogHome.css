@@ -1,0 +1,78 @@
+.blogHomeHeadli{
+	padding-left: 30px;
+}
+.blogBody{
+	margin-left: 10%;
+	width: 80%;
+	height: 100%;
+}
+.characters{
+	position:absolute;
+	margin-top: -700px;
+	margin-left: 550px;
+	font-family: KaiTi ;
+	font-size: 45px;
+	color:whitesmoke;
+}
+.w1{
+	padding-left: 100px;
+}
+.w2{
+	font-size: 50px;
+}
+.foot{
+	height: 180px;
+}
+.foot-ass{
+	margin-left: 10%;
+	width: 80%;
+	height: 180px;
+ 	border-right: #3F3F3F 1px solid; 
+	border-left: #3F3F3F 1px solid;
+}
+.foot-zise1{
+	line-height:180px ;
+	font-size: 38px;
+	color:#333333;
+	font-family: KaiTi;
+	padding-left: 8%;
+}
+
+.ass>div>a{
+	margin-left: 20%;
+	display: inline-block;
+	padding-top: 20%;
+	padding-left: 20%;
+	height: 30px;
+	font-size: 20px;
+	color:#333333;
+	font-family:arial;
+	width: 50%;
+	border-bottom:#3F3F3F 1px solid ;
+}
+.layui-col-md4>div>img{
+	padding-top: 3%;
+	margin-left: 34%;
+	display: inline-block;
+	font-size: 20px;
+	color:#333333;
+	font-family:arial;
+	width: 90px;
+	height: 45px;
+}
+.foot-bottom{
+	background-color: rgb(50,50,50);
+	height: 45px;
+	
+}
+.foot-bottom>div{
+	margin-left: 10%;
+	width: 80%;
+}
+.foot-bottom a{
+	padding-left: 20%;
+	line-height: 45px;
+	font-size: 15px;
+	display: inline-block;
+	color:#8D8D8D;
+}

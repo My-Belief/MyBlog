@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.lijinbo.mapper.AboutMapper" >
+  <resultMap id="BaseResultMap" type="cn.lijinbo.pojo.About" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.lijinbo.pojo.About" extends="BaseResultMap" >
+    <result column="about_information" property="aboutInformation" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aid
+  </sql>
+  <sql id="Blob_Column_List" >
+    about_information
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_about
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_about
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.lijinbo.pojo.About" >
+    insert into tb_about (aid, about_information)
+    values (#{aid,jdbcType=INTEGER}, #{aboutInformation,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.lijinbo.pojo.About" >
+    insert into tb_about
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="aboutInformation != null" >
+        about_information,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="aboutInformation != null" >
+        #{aboutInformation,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lijinbo.pojo.About" >
+    update tb_about
+    <set >
+      <if test="aboutInformation != null" >
+        about_information = #{aboutInformation,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.lijinbo.pojo.About" >
+    update tb_about
+    set about_information = #{aboutInformation,jdbcType=LONGVARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>

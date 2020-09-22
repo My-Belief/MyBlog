@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 框架基本配置 -->
+	<!-- 别名 -->
+	<!-- 插件 -->
+	<settings>
+		<!--		日志文件-->
+		<setting name="logImpl" value="STDOUT_LOGGING"/>
+		<!--		插入自动返回主键-->
+		<setting name="useGeneratedKeys" value="true"/>
+	</settings>
+	<typeAliases>
+		<!--		全自动简化该包下的类为小写开头-->
+		<package name="cn.lijinbo.mapper"/>
+
+	</typeAliases>
+</configuration>

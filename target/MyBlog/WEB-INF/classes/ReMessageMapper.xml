@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.lijinbo.mapper.ReMessageMapper" >
+  <resultMap id="BaseResultMap" type="cn.lijinbo.pojo.ReMessage" >
+    <id column="msid" property="msid" jdbcType="INTEGER" />
+    <result column="mid" property="mid" jdbcType="INTEGER" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    msid, mid, message
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_message2
+    where msid = #{msid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_message2
+    where msid = #{msid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.lijinbo.pojo.ReMessage" >
+    insert into tb_message2 (msid, mid, message
+      )
+    values (#{msid,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{message,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.lijinbo.pojo.ReMessage" >
+    insert into tb_message2
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="msid != null" >
+        msid,
+      </if>
+      <if test="mid != null" >
+        mid,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="msid != null" >
+        #{msid,jdbcType=INTEGER},
+      </if>
+      <if test="mid != null" >
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lijinbo.pojo.ReMessage" >
+    update tb_message2
+    <set >
+      <if test="mid != null" >
+        mid = #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where msid = #{msid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lijinbo.pojo.ReMessage" >
+    update tb_message2
+    set mid = #{mid,jdbcType=INTEGER},
+      message = #{message,jdbcType=VARCHAR}
+    where msid = #{msid,jdbcType=INTEGER}
+  </update>
+</mapper>

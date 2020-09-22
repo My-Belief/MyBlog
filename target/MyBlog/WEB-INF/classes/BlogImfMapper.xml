@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.lijinbo.mapper.BlogImfMapper" >
+  <resultMap id="BaseResultMap" type="cn.lijinbo.pojo.BlogImf" >
+    <id column="bno" property="bno" jdbcType="INTEGER" />
+    <result column="btitle" property="btitle" jdbcType="VARCHAR" />
+    <result column="build_time" property="buildTime" jdbcType="DATE" />
+    <result column="typeid" property="typeid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.lijinbo.pojo.BlogImf" extends="BaseResultMap" >
+    <result column="bcontext" property="bcontext" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bno, btitle, build_time, typeid
+  </sql>
+  <sql id="Blob_Column_List" >
+    bcontext
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_blog_information
+    where bno = #{bno,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_blog_information
+    where bno = #{bno,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.lijinbo.pojo.BlogImf" >
+    insert into tb_blog_information (bno, btitle, build_time, 
+      typeid, bcontext)
+    values (#{bno,jdbcType=INTEGER}, #{btitle,jdbcType=VARCHAR}, #{buildTime,jdbcType=DATE}, 
+      #{typeid,jdbcType=INTEGER}, #{bcontext,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.lijinbo.pojo.BlogImf" >
+    insert into tb_blog_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bno != null" >
+        bno,
+      </if>
+      <if test="btitle != null" >
+        btitle,
+      </if>
+      <if test="buildTime != null" >
+        build_time,
+      </if>
+      <if test="typeid != null" >
+        typeid,
+      </if>
+      <if test="bcontext != null" >
+        bcontext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bno != null" >
+        #{bno,jdbcType=INTEGER},
+      </if>
+      <if test="btitle != null" >
+        #{btitle,jdbcType=VARCHAR},
+      </if>
+      <if test="buildTime != null" >
+        #{buildTime,jdbcType=DATE},
+      </if>
+      <if test="typeid != null" >
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="bcontext != null" >
+        #{bcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lijinbo.pojo.BlogImf" >
+    update tb_blog_information
+    <set >
+      <if test="btitle != null" >
+        btitle = #{btitle,jdbcType=VARCHAR},
+      </if>
+      <if test="buildTime != null" >
+        build_time = #{buildTime,jdbcType=DATE},
+      </if>
+      <if test="typeid != null" >
+        typeid = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="bcontext != null" >
+        bcontext = #{bcontext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where bno = #{bno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.lijinbo.pojo.BlogImf" >
+    update tb_blog_information
+    set btitle = #{btitle,jdbcType=VARCHAR},
+      build_time = #{buildTime,jdbcType=DATE},
+      typeid = #{typeid,jdbcType=INTEGER},
+      bcontext = #{bcontext,jdbcType=LONGVARCHAR}
+    where bno = #{bno,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lijinbo.pojo.BlogImf" >
+    update tb_blog_information
+    set btitle = #{btitle,jdbcType=VARCHAR},
+      build_time = #{buildTime,jdbcType=DATE},
+      typeid = #{typeid,jdbcType=INTEGER}
+    where bno = #{bno,jdbcType=INTEGER}
+  </update>
+</mapper>
