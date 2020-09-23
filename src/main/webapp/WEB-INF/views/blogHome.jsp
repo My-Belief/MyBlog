@@ -31,19 +31,19 @@
                 Blog』<span></span></a>
         </li>
         <li class="layui-nav-item ">
-            <a href="blogHome">首页</a>
+            <a href="/blogHome">首页</a>
         </li>
         <li class="layui-nav-item">
             <a href="/allblog">所有博客</a>
         </li>
         <li class="layui-nav-item">
-            <a href="blogroll">友情链接</a>
+            <a href="/blogroll">友情链接</a>
         </li>
         <li class="layui-nav-item">
-            <a href="comRecord">提交记录</a>
+            <a href="/comRecord">提交记录</a>
         </li>
         <li class="layui-nav-item">
-            <a href="message">留言板块<span class="layui-badge">9</span></a>
+            <a href="/message">留言板块<span class="layui-badge">9</span></a>
         </li>
         <li class="layui-nav-item">
             <a href="about">关于本站</a>

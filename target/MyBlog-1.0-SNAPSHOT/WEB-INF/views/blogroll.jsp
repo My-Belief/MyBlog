@@ -30,26 +30,26 @@
 <div style="height: 4.125rem;">
     <ul class="layui-nav" style="height: 66px;font-family: KaiTi;">
         <li class="layui-nav-item" style="width: 50%;">
-            <a style="font-family: KaiTi; font-size: 2rem; color: white; padding-left: 100px;" href="blogHome">『Belief's
+            <a style="font-family: KaiTi; font-size: 2rem; color: white; padding-left: 100px;" href="/blogHome">『Belief's
                 Blog』<span></span></a>
         </li>
         <li class="layui-nav-item ">
-            <a href="blogHome">首页</a>
+            <a href="/blogHome">首页</a>
         </li>
         <li class="layui-nav-item">
-            <a href="allblog">所有博客</a>
+            <a href="/allblog">所有博客</a>
         </li>
         <li class="layui-nav-item">
-            <a href="blogroll">友情链接</a>
+            <a href="/blogroll">友情链接</a>
         </li>
         <li class="layui-nav-item">
-            <a href="comRecord">提交记录</a>
+            <a href="/comRecord">提交记录</a>
         </li>
         <li class="layui-nav-item">
-            <a href="message">留言板块<span class="layui-badge">9</span></a>
+            <a href="/message">留言板块<span class="layui-badge">9</span></a>
         </li>
         <li class="layui-nav-item">
-            <a href="about">关于本站</a>
+            <a href="/about">关于本站</a>
         </li>
         <li class="layui-nav-item" lay-unselect="">
             <a href="javascript:;">我的链接<img src="../layui/images/right.png" class="layui-nav-img"></a>
@@ -63,7 +63,7 @@
         <li class="layui-nav-item" lay-unselect="" >
             <a href="javascript:;"><img src="../layui/images/default.png" class="layui-nav-img">未登录</a>
             <dl class="layui-nav-child">
-                <dd><a href="login">登录</a></dd>
+                <dd><a href="/login">登录</a></dd>
             </dl>
         </li>
 

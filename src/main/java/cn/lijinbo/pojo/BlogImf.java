@@ -1,5 +1,7 @@
 package cn.lijinbo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class BlogImf {
@@ -7,6 +9,7 @@ public class BlogImf {
 
     private String btitle;
 
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",locale = "zh",timezone = "GMT+8")
     private Date buildTime;
 
     private Integer typeid;

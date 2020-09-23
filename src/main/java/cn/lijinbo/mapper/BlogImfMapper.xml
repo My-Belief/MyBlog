@@ -10,4 +10,7 @@
   <resultMap id="ResultMapWithBLOBs" type="cn.lijinbo.pojo.BlogImf" extends="BaseResultMap" >
     <result column="bcontext" property="bcontext" jdbcType="LONGVARCHAR" />
   </resultMap>
+  <select id="selectAllBlog" resultType="cn.lijinbo.pojo.BlogImf">
+        select * from tb_blog_information
+  </select>
 </mapper>

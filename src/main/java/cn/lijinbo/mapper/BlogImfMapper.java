@@ -3,6 +3,8 @@ package cn.lijinbo.mapper;
 import cn.lijinbo.pojo.BlogImf;
 
 public interface BlogImfMapper {
+    BlogImf selectAllBlog();
+
     int deleteByPrimaryKey(Integer bno);
 
     int insert(BlogImf record);
@@ -10,10 +12,6 @@ public interface BlogImfMapper {
     int insertSelective(BlogImf record);
 
     BlogImf selectByPrimaryKey(Integer bno);
-
-    int updateByPrimaryKeySelective(BlogImf record);
-
-    int updateByPrimaryKeyWithBLOBs(BlogImf record);
 
     int updateByPrimaryKey(BlogImf record);
 }

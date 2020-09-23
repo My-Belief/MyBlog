@@ -5,6 +5,7 @@
   Time: 15:06
   To change this template use File | Settings | File Templates.
 --%>
+<%@page deferredSyntaxAllowedAsLiteral="true"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,13 +17,36 @@
     <link rel="stylesheet" href="../layui/css/layui.css" media="all">
     <link rel="stylesheet" href="../layui/css/definecss/BlogHome.css" media="all">
     <script type="text/javascript" src="../layui/layui.js"></script>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../editormd/css/editormd.css" />
+    <script src="../editormd/examples/js/jquery.min.js"></script>
+    <!-- 引入js -->
+    <script src="../editormd/editormd.min.js"></script>
+    <link rel="stylesheet" href="../editormd/css/editormd.preview.css" />
+    <script src="../editormd/lib/marked.min.js"></script>
+    <script src="../editormd/lib/prettify.min.js"></script>
+    <script src="../editormd/lib/raphael.min.js"></script>
+    <script src="../editormd/lib/underscore.min.js"></script>
+    <script src="../editormd/lib/sequence-diagram.min.js"></script>
+    <script src="../editormd/lib/flowchart.min.js"></script>
+    <script src="../editormd/lib/jquery.flowchart.min.js"></script>
     <script>
         layui.use('element', function() {
             var element = layui.element;
         });
-        $(function(){
-
-        })
+        var testEditor;
+        $(function () {
+            testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList: true,
+                tocm: true,
+                tocTitle : "目录",
+                tex: true, // 默认不解析
+                flowChart: true, // 默认不解析
+                sequenceDiagram: true, // 默认不解析
+                codeFold: true
+            });});
     </script>
 </head>
 <body style="overflow: auto;min-width:1800px;">
@@ -37,19 +61,19 @@
             <a href="/blogHome">首页</a>
         </li>
         <li class="layui-nav-item">
-            <a href="allblog">所有博客</a>
+            <a href="/allblog">所有博客</a>
         </li>
         <li class="layui-nav-item">
-            <a href="blogroll">友情链接</a>
+            <a href="/blogroll">友情链接</a>
         </li>
         <li class="layui-nav-item">
-            <a href="comRecord">提交记录</a>
+            <a href="/comRecord">提交记录</a>
         </li>
         <li class="layui-nav-item">
-            <a href="message">留言板块<span class="layui-badge">9</span></a>
+            <a href="/message">留言板块<span class="layui-badge">9</span></a>
         </li>
         <li class="layui-nav-item">
-            <a href="about">关于本站</a>
+            <a href="/about">关于本站</a>
         </li>
         <li class="layui-nav-item" lay-unselect="">
             <a href="javascript:;">我的链接<img src="../layui/images/right.png" class="layui-nav-img"></a>
@@ -63,7 +87,7 @@
         <li class="layui-nav-item" lay-unselect="" >
             <a href="javascript:;"><img src="../layui/images/default.png" class="layui-nav-img">未登录</a>
             <dl class="layui-nav-child">
-                <dd><a href="login.html">登录</a></dd>
+                <dd><a href="/login">登录</a></dd>
             </dl>
         </li>
 
@@ -81,7 +105,20 @@
 <!-- 主体部分 -->
 <div style="width: 100%; height: 100%;background-color:  rgb(50,50,50); ">
     <div class="blogBody">
-        <img src="../layui/images/backgroundImg.png" style="width: 100%; height: 100%; opacity: .15 ;" />
+        <div style="padding: 20px; background-color: #F2F2F2;position: relative !important;top:-900px;width: 70%;left:15%;border-radius: 10px;">
+            <div class="layui-row layui-col-space15" style="">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">#{blog.btitle}</div>
+                        <div class="layui-card-body">
+                            <div id="doc-content">
+                                <textarea style="display:none;" placeholder="markdown语言">${blog.bcontext}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

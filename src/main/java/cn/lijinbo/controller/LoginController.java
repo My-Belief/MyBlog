@@ -42,22 +42,20 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping("/allblog")
-    public String toallblog(){
-        return "allblog";
-    }
+//    @RequestMapping("/allblog")
+//    public String toallblog(){
+//        return "allblog";
+//    }
 
     @RequestMapping("/home")
     public String toblogHome(){
         return "blogHome";
     }
 
-    @RequestMapping("/roll")
+    @RequestMapping("/blogroll")
     public String toblogroll(){
         return "blogroll";
     }
-
-
 
     @RequestMapping("/about")
     public String toabout(){

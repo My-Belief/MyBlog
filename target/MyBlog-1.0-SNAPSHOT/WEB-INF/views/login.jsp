@@ -25,7 +25,7 @@
         <form action="/login" method="post">
             <div class="main">
                 <div class="form-left-to-w3l">
-                    <input type="text" name="account" placeholder="account" required="">
+                    <input type="text" name="account"  placeholder="account" required="">
                 </div>
                 <div class="form-left-to-w3l ">
                     <input type="password" name="password" placeholder="password" required="">
