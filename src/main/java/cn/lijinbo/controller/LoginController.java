@@ -42,10 +42,6 @@ public class LoginController {
         return "login";
     }
 
-//    @RequestMapping("/allblog")
-//    public String toallblog(){
-//        return "allblog";
-//    }
 
     @RequestMapping("/home")
     public String toblogHome(){

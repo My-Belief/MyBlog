@@ -34,12 +34,13 @@
                 tex: true, // 开启科学公式TeX语言支持，默认关闭
                 flowChart: true, // 开启流程图支持，默认关闭
                 sequenceDiagram: true, // 开启时序/序列图支持，默认关闭,
+                tocm            : true,         // Using [TOCM]
                 imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
                 toolbarIcons: function() { //自定义工具栏，后面有详细介绍
                     return editormd.toolbarModes['full']; // full, simple, mini
                 },
                 //           //syncScrolling : false,
-                //           saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
                 //           searchReplace : true,
                 //           //watch : false,                // 关闭实时预览
                 //           htmlDecode : "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
@@ -47,7 +48,6 @@
                 //           //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
                 //           emoji : true,
                 //           taskList : true,
-                //           tocm            : true,         // Using [TOCM]
                 //           //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
                 //           //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
                 //           //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
@@ -77,28 +77,41 @@
             //  contentEditor.fullscreen();//全屏（按ESC取消）
             // contentEditor.showToolbar();//显示工具栏
             //  contentEditor.hideToolbar();//隐藏工具栏
-            contentEditor.config("tocDropdown", false); //TOC默认
-            contentEditor.config({
-                tocDropdown: true
-                // tocTitle      : "目录 Table of Contents"
-            }); //TOC下拉菜单
+            // contentEditor.config("tocDropdown", false); //TOC默认
+            // contentEditor.config({
+            //     tocDropdown: true
+            //     // tocTitle      : "目录 Table of Contents"
+            // }); //TOC下拉菜单
         });
+
+        function ExportData() {
+            //传参到form表单隐藏的input标签里面去
+            $("input[name='status']").val(0);
+            console.log($("input[name='status']").val()+""+$("input[name='btitle']").val());
+
+
+            // form表单提交
+            document.getElementById("exportForm").submit();
+        }
     </script>
 </head>
 <body style="margin: 0; padding: 0;">
 <div >
-    <form>
+    <form id="exportForm" action="/commit" enctype="multipart/form-data" method="post">
         <div  style="width:100%; float: left;height:45px ;">
             <div style="line-height: 45px;width: 100%;">
                 <a style="text-decoration: none;color: #000000;width: 4%;" href="/allblog">〈 文章管理</a>
-                <input type="text" style="height: 25px;width:83%;min-width:20% ;" placeholder="欢迎使用markdown编辑器!"/>
-                <input type="submit" style="line-height:30px;border: 1px red solid;border-radius: 4px;width: 5%;" value="保存草稿"/>
+                <input type="text" name="btitle" style="height: 25px;width:83%;min-width:20% ;" placeholder="欢迎使用markdown编辑器!"/>
+                <input type="text" name="status" style="display: none" value="1">
+                <input type="button" style="line-height:30px;border: 1px red solid;border-radius: 4px;width: 5%;" value="保存草稿" onclick="ExportData()"/>
                 <input type="submit" style="width: 5%;line-height:30px;background-color: red;border: 0px ;border-radius: 4px;color: #FFFFFC;" value="发布博客"/>
             </div>
 
         </div>
         <div id="md-content" style="z-index: 1 !important;width: 100%;">
-            <textarea class="editormd-markdown-textarea">hahah</textarea>
+            <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
+            <!-- 用于后端获取md稳当内容，Java中：request.getParameter("my-editormd-html-code")。 -->
+            <textarea id="my-editormd-html-code" name="bcontext" style="display:none;"></textarea>
         </div>
     </form>
 

@@ -112,6 +112,7 @@
                         <div class="layui-card-header">#{blog.btitle}</div>
                         <div class="layui-card-body">
                             <div id="doc-content">
+                                <!-- 书写与实时显示的textarea -->
                                 <textarea style="display:none;" placeholder="markdown语言">${blog.bcontext}</textarea>
                             </div>
                         </div>

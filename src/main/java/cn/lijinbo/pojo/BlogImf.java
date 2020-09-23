@@ -16,6 +16,16 @@ public class BlogImf {
 
     private String bcontext;
 
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Integer getBno() {
         return bno;
     }
@@ -62,6 +72,15 @@ public class BlogImf {
         this.buildTime = buildTime;
         this.typeid = typeid;
         this.bcontext = bcontext;
+    }
+
+    public BlogImf(Integer bno, String btitle, Date buildTime, Integer typeid, String bcontext, String status) {
+        this.bno = bno;
+        this.btitle = btitle;
+        this.buildTime = buildTime;
+        this.typeid = typeid;
+        this.bcontext = bcontext;
+        this.status = status;
     }
 
     public BlogImf() {
