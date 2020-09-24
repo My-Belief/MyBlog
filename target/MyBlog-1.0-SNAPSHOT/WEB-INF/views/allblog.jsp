@@ -21,10 +21,10 @@
     <link rel="stylesheet" type="text/css" href="../editormd/css/editormd.css" />
     <script src="../editormd/examples/js/jquery.min.js"></script>
     <!-- 引入js -->
-    <script src="../editormd/editormd.min.js"></script>
     <link rel="stylesheet" href="../editormd/css/editormd.preview.css" />
-    <script src="../editormd/lib/marked.min.js"></script>
     <script src="../editormd/lib/prettify.min.js"></script>
+    <script src="../editormd/lib/marked.min.js"></script>
+    <script src="../editormd/editormd.min.js"></script>
     <script src="../editormd/lib/raphael.min.js"></script>
     <script src="../editormd/lib/underscore.min.js"></script>
     <script src="../editormd/lib/sequence-diagram.min.js"></script>
@@ -46,8 +46,43 @@
                 flowChart: true, // 默认不解析
                 sequenceDiagram: true, // 默认不解析
                 codeFold: true
-            });});
+            });
+
+            var reg=/<[^<>]+>/g;
+            // var zz=new RegExp(reg);
+            var str=$("#doc-content").text();
+            str=str.replace(reg,'');
+            // zz.exec(str);
+            $("#doc-content").html('');
+            $("#doc-content").text(""+str);
+        });
     </script>
+    <style>
+        .layui-card {
+
+            overflow: hidden;
+            position: absolute;
+            padding: 15px 15px;
+            line-height: 24px;
+            width: 40% !important;
+            height:120px !important;
+            padding-right: 20px;
+        }
+        #doc-content{
+            display:-webkit-box;
+            -webkit-box-orient:vertical;
+            -webkit-line-clamp:3;//控制行数
+            overflow:hidden;
+            /*padding-right: 20px;*/
+            text-indent:2em;
+            text-overflow: ellipsis;
+            padding: 0;
+            overflow-y:hidden;
+        }
+        .editormd-preview-container, .editormd-html-preview {
+
+        }
+    </style>
 </head>
 <body style="overflow: auto;min-width:1800px;">
 <!-- 头部分 -->
@@ -105,20 +140,20 @@
 <!-- 主体部分 -->
 <div style="width: 100%; height: 100%;background-color:  rgb(50,50,50); ">
     <div class="blogBody">
-        <div style="padding: 20px; background-color: #F2F2F2;position: relative !important;top:-900px;width: 70%;left:15%;border-radius: 10px;">
+        <div style="padding: 20px; height: 100%;width: 100%">
             <div class="layui-row layui-col-space15" style="">
                 <div class="layui-col-md12">
                     <div class="layui-card">
-                        <div class="layui-card-header">#{blog.btitle}</div>
+                        <div class="layui-card-header">${blog.btitle}</div>
                         <div class="layui-card-body">
-                            <div id="doc-content">
+                            <div id="doc-content" name="doc-content">
                                 <!-- 书写与实时显示的textarea -->
-                                <textarea style="display:none;" placeholder="markdown语言">${blog.bcontext}</textarea>
+                                <textarea  style="display:none;" placeholder="markdown语言">${blog.bcontext}</textarea>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+<%--            </div>--%>
         </div>
 
     </div>

@@ -83,9 +83,7 @@
             //     // tocTitle      : "目录 Table of Contents"
             // }); //TOC下拉菜单
         });
-        // $(function(){
-        //
-        // })
+
         function ExportData() {
             //传参到form表单隐藏的input标签里面去
             $("input[name='status']").val(0);

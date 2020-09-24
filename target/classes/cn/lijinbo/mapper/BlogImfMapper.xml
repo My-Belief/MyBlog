@@ -13,4 +13,7 @@
   <select id="selectAllBlog" resultType="cn.lijinbo.pojo.BlogImf">
         select * from tb_blog_information
   </select>
+  <insert id="insertBlogArticle" parameterType="cn.lijinbo.pojo.BlogImf">
+        insert into tb_blog_information valus(null,#{btitle},#{bcontext},#{bulidTime},#{typeid})
+  </insert>
 </mapper>
