@@ -7,11 +7,11 @@ public interface BlogTypeMapper {
 
     int insert(BlogType record);
 
-    int insertSelective(BlogType record);
-
-    BlogType selectByPrimaryKey(Integer tid);
-
-    int updateByPrimaryKeySelective(BlogType record);
-
-    int updateByPrimaryKey(BlogType record);
+//    int insertSelective(BlogType record);
+//
+//    BlogType selectByPrimaryKey(Integer tid);
+//
+//    int updateByPrimaryKeySelective(BlogType record);
+//
+//    int updateByPrimaryKey(BlogType record);
 }

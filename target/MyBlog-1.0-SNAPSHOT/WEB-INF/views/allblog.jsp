@@ -5,7 +5,7 @@
   Time: 15:06
   To change this template use File | Settings | File Templates.
 --%>
-<%@page deferredSyntaxAllowedAsLiteral="true"%>
+<%@page deferredSyntaxAllowedAsLiteral="true" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,11 +17,12 @@
     <link rel="stylesheet" href="../layui/css/layui.css" media="all">
     <link rel="stylesheet" href="../layui/css/definecss/BlogHome.css" media="all">
     <script type="text/javascript" src="../layui/layui.js"></script>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-    <link rel="stylesheet" type="text/css" href="../editormd/css/editormd.css" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../editormd/css/editormd.css"/>
     <script src="../editormd/examples/js/jquery.min.js"></script>
     <!-- 引入js -->
-    <link rel="stylesheet" href="../editormd/css/editormd.preview.css" />
+    <link rel="stylesheet" href="../editormd/css/editormd.preview.css"/>
     <script src="../editormd/lib/prettify.min.js"></script>
     <script src="../editormd/lib/marked.min.js"></script>
     <script src="../editormd/editormd.min.js"></script>
@@ -31,7 +32,7 @@
     <script src="../editormd/lib/flowchart.min.js"></script>
     <script src="../editormd/lib/jquery.flowchart.min.js"></script>
     <script>
-        layui.use('element', function() {
+        layui.use('element', function () {
             var element = layui.element;
         });
         var testEditor;
@@ -41,48 +42,22 @@
                 emoji: true,
                 taskList: true,
                 tocm: true,
-                tocTitle : "目录",
+                tocTitle: "目录",
                 tex: true, // 默认不解析
                 flowChart: true, // 默认不解析
                 sequenceDiagram: true, // 默认不解析
                 codeFold: true
             });
 
-            var reg=/<[^<>]+>/g;
+            var reg = /<[^<>]+>/g;
             // var zz=new RegExp(reg);
-            var str=$("#doc-content").text();
-            str=str.replace(reg,'');
+            var str = $("#doc-content").text();
+            str = str.replace(reg, '');
             // zz.exec(str);
             $("#doc-content").html('');
-            $("#doc-content").text(""+str);
+            $("#doc-content").text("" + str);
         });
     </script>
-    <style>
-        .layui-card {
-
-            overflow: hidden;
-            position: absolute;
-            padding: 15px 15px;
-            line-height: 24px;
-            width: 40% !important;
-            height:120px !important;
-            padding-right: 20px;
-        }
-        #doc-content{
-            display:-webkit-box;
-            -webkit-box-orient:vertical;
-            -webkit-line-clamp:3;//控制行数
-            overflow:hidden;
-            /*padding-right: 20px;*/
-            text-indent:2em;
-            text-overflow: ellipsis;
-            padding: 0;
-            overflow-y:hidden;
-        }
-        .editormd-preview-container, .editormd-html-preview {
-
-        }
-    </style>
 </head>
 <body style="overflow: auto;min-width:1800px;">
 <!-- 头部分 -->
@@ -93,7 +68,7 @@
                 Blog』<span></span></a>
         </li>
         <li class="layui-nav-item ">
-            <a href="/blogHome">首页</a>
+            <a href="/home">首页</a>
         </li>
         <li class="layui-nav-item">
             <a href="/allblog">所有博客</a>
@@ -119,7 +94,7 @@
             </dl>
         </li>
 
-        <li class="layui-nav-item" lay-unselect="" >
+        <li class="layui-nav-item" lay-unselect="">
             <a href="javascript:;"><img src="../layui/images/default.png" class="layui-nav-img">未登录</a>
             <dl class="layui-nav-child">
                 <dd><a href="/login">登录</a></dd>
@@ -140,22 +115,89 @@
 <!-- 主体部分 -->
 <div style="width: 100%; height: 100%;background-color:  rgb(50,50,50); ">
     <div class="blogBody">
-        <div style="padding: 20px; height: 100%;width: 100%">
-            <div class="layui-row layui-col-space15" style="">
-                <div class="layui-col-md12">
-                    <div class="layui-card">
-                        <div class="layui-card-header">${blog.btitle}</div>
-                        <div class="layui-card-body">
-                            <div id="doc-content" name="doc-content">
-                                <!-- 书写与实时显示的textarea -->
-                                <textarea  style="display:none;" placeholder="markdown语言">${blog.bcontext}</textarea>
+        <%--        左侧部分--%>
+        <div style="width: 25%;float: left;height: 100%;background-color: #00a8c6;margin-left:15%">`
+
+            <div style="padding: 20px; height: 380px!important;width: 90%">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md12">
+                        <div class="layui-card" style="height: 380px!important;width: 90%">
+                            <%--                            头像--%>
+                            <div class="layui-card-header" style="height: 150px!important;">
+                                <img src="../layui/images/BlogHead.png"
+                                     style="width: 90px;height: 90px;border-radius: 45px;margin-left:110px;margin-top:15px">
+                                <span style="font-size: 20px;width: 30px;height: 20px;margin-left:130px;">Belief</span>
+                            </div>
+                            <%--                            显示--%>
+                            <div class="layui-card-body">
+                                <span style="margin-left: 110px;height: 25px;font-size:16px">我执着,故我在</span><br>
+                                <span style="margin-left: 85px;height: 25px;font-size: 14px;color: #3F3F3F">I persist,therefore I am</span>
+                                <div class="layui-row" style="margin-left:60px;margin-top: 15px">
+                                    <div class="layui-col-md4">
+                                        <div class="grid-demo grid-demo-bg1">
+                                            <span>98</span><br/>
+                                            <span>博客</span>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-md4">
+                                        <div class="grid-demo">
+                                            <span>10</span><br/>
+                                            <span>分类</span>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-md4">
+                                        <div class="grid-demo grid-demo-bg1">
+                                            <span>443</span><br/>
+                                            <span>标签</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="../layui/images/tubiao.png" style="width: 280px;height: 60px;margin: 15px;">
                             </div>
                         </div>
                     </div>
                 </div>
-<%--            </div>--%>
-        </div>
+            </div>
+<%--            <dd><a href="">首页</a></dd>--%>
+<%--            <dd><a href="">友情链接</a></dd>--%>
+<%--            <dd><a href="">提交记录</a></dd>--%>
+<%--            <dd><a href="">留言板块</a></dd>--%>
+<%--            <dd><a href="">关于本站</a></dd>--%>
 
+            <div style="padding: 20px; height: 380px!important;">
+                <div class="layui-col-md12">
+                    <div class="layui-card"  style="height: 380px!important;">
+                        <div class="layui-card-header">博客导航</div>
+                        <div class="layui-card-body">
+                            <ul class="cbdh" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
+                                <li class="layui-nav-item"><a href="">首页</a></li>
+                                <li class="layui-nav-item"><a href="">友情链接</a></li>
+                                <li class="layui-nav-item"><a href="">提交记录</a></li>
+                                <li class="layui-nav-item"><a href="">留言板块</a></li>
+                                <li class="layui-nav-item"><a href="">留言板块</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%--        右侧部分--%>
+    <div style="padding:0 20px; height: 100%;width: 45%;background-color: #b6a3a3;float: left">
+        <div class="layui-row layui-col-space15" style="padding-top: 20px">
+            <div class="layui-col-md12">
+                <div class="layui-card" style="height:100px !important;padding: 10px 10px!important;">
+                    <div class="layui-card-header"
+                         style="line-height: 24px!important;height: 24px;">${blog[0].btitle}</div>
+                    <div class="layui-card-body" style="padding:5px 10px;">
+                        <div id="doc-content" name="doc-content">
+                            <!-- 书写与实时显示的textarea -->
+                            <textarea style="display:none;"
+                                      placeholder="markdown语言">${blog[0].bcontext}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- 主体部分完结 -->
@@ -175,20 +217,20 @@
                         <div class="layui-row">
                             <div class="layui-col-md4 ass">
                                 <div class="grid-demo grid-demo-bg1">
-                                    <a href="">CSDN</a><br />
-                                    <img src="../layui/images/CSDN.png" />
+                                    <a href="">CSDN</a><br/>
+                                    <img src="../layui/images/CSDN.png"/>
                                 </div>
                             </div>
                             <div class="layui-col-md4 ass">
                                 <div class="grid-demo">
-                                    <a href="">QQ</a><br />
-                                    <img src="../layui/images/Email.png" />
+                                    <a href="">QQ</a><br/>
+                                    <img src="../layui/images/Email.png"/>
                                 </div>
                             </div>
                             <div class="layui-col-md4 ass">
                                 <div class="grid-demo grid-demo-bg1">
-                                    <a href="">Github</a><br />
-                                    <img src="../layui/images/Github.png" />
+                                    <a href="">Github</a><br/>
+                                    <img src="../layui/images/Github.png"/>
                                 </div>
                             </div>
                         </div>
@@ -212,12 +254,13 @@
                 </div>
                 <div class="layui-col-md4">
                     <div class="grid-demo grid-demo-bg1">
-                        <a>Building:2020年9月21日20:10:33</a>
+                        <a href="">Building:2020年9月21日20:10:33</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

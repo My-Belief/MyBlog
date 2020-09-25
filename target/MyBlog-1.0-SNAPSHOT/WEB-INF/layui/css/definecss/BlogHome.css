@@ -76,3 +76,31 @@
 	display: inline-block;
 	color:#8D8D8D;
 }
+.layui-card {
+	overflow: hidden;
+	position: absolute;
+	width:95% !important;
+	height:100px !important;
+	border-radius: 8px;
+	/*margin-left: 200px;*/
+}
+#doc-content{
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:3;//控制行数
+	overflow:hidden;
+	text-indent:2em;
+	text-overflow: ellipsis;
+	padding: 0;
+	overflow-y:hidden;
+	background-color:#f8f8f8;
+}
+.cbdh{
+	width:270px!important;
+}
+.cbdh>li{
+	background-color: #FFFFFC!important;
+	font-family: KaiTi!important;
+	line-height: 50px;
+	font-size: 16px;
+}

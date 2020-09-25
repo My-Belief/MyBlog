@@ -34,7 +34,7 @@
                 Blog』<span></span></a>
         </li>
         <li class="layui-nav-item ">
-            <a href="/blogHome">首页</a>
+            <a href="/home">首页</a>
         </li>
         <li class="layui-nav-item">
             <a href="/allblog">所有博客</a>

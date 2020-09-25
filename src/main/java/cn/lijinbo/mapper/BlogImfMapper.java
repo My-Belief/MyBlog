@@ -2,18 +2,14 @@ package cn.lijinbo.mapper;
 
 import cn.lijinbo.pojo.BlogImf;
 
+import java.util.List;
+
 public interface BlogImfMapper {
-    BlogImf selectAllBlog();
+
+    List<BlogImf>  selectAllBlog();
 
     void insertBlogArticle(BlogImf record);
 
-//    int deleteByPrimaryKey(Integer bno);
-//
-//    int insert(BlogImf record);
-//
-//    int insertSelective(BlogImf record);
-//
-//    BlogImf selectByPrimaryKey(Integer bno);
-//
-//    int updateByPrimaryKey(BlogImf record);
+    void deleteByBno(Integer bno);
+
 }

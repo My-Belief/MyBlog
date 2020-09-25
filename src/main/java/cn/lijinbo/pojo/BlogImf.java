@@ -9,7 +9,7 @@ public class BlogImf {
 
     private String btitle;
 
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss",locale = "zh",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd",locale = "zh",timezone = "GMT+8")
     private Date buildTime;
 
     private Integer typeid;
@@ -17,6 +17,8 @@ public class BlogImf {
     private String bcontext;
 
     private String status;
+
+
 
     public String getStatus() {
         return status;
@@ -66,16 +68,16 @@ public class BlogImf {
         this.bcontext = bcontext == null ? null : bcontext.trim();
     }
 
-    public BlogImf(Integer bno, String btitle, Date buildTime, Integer typeid, String bcontext) {
+    public BlogImf(Integer bno, String btitle, Date buildTime, Integer typeid, String bcontext, String status) {
         this.bno = bno;
         this.btitle = btitle;
         this.buildTime = buildTime;
         this.typeid = typeid;
         this.bcontext = bcontext;
+        this.status = status;
     }
 
-    public BlogImf(Integer bno, String btitle, Date buildTime, Integer typeid, String bcontext, String status) {
-        this.bno = bno;
+    public BlogImf(String btitle, Date buildTime, Integer typeid, String bcontext, String status) {
         this.btitle = btitle;
         this.buildTime = buildTime;
         this.typeid = typeid;

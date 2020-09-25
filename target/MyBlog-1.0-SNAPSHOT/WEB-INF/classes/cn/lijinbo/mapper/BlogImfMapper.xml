@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.lijinbo.mapper.BlogImfMapper" >
-  <resultMap id="BaseResultMap" type="cn.lijinbo.pojo.BlogImf" >
+  <resultMap id="BaseResultMap" type="cn.lijinbo.pojo.BlogImf" autoMapping="true">
     <id column="bno" property="bno" jdbcType="INTEGER" />
     <result column="btitle" property="btitle" jdbcType="VARCHAR" />
     <result column="build_time" property="buildTime" jdbcType="DATE" />
@@ -10,10 +10,16 @@
   <resultMap id="ResultMapWithBLOBs" type="cn.lijinbo.pojo.BlogImf" extends="BaseResultMap" >
     <result column="bcontext" property="bcontext" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <select id="selectAllBlog" resultType="cn.lijinbo.pojo.BlogImf">
+<!--  查询所有博客信息-->
+  <select id="selectAllBlog" resultMap="BaseResultMap">
         select * from tb_blog_information
   </select>
+<!--插入博客-->
   <insert id="insertBlogArticle" parameterType="cn.lijinbo.pojo.BlogImf">
-        insert into tb_blog_information valus(null,#{btitle},#{bcontext},#{bulidTime},#{typeid})
+        insert into tb_blog_information values(null,#{btitle},#{bcontext},#{buildTime},#{typeid},#{status})
   </insert>
+<!--  删除博客-->
+  <delete id="deleteByBno" parameterType="Integer">
+        delete from tb_blog_information where bno=#{bno}
+  </delete>
 </mapper>
