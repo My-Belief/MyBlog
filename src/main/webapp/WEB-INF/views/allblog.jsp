@@ -113,25 +113,25 @@
 </div>
 <!-- 头部分完结 -->
 <!-- 主体部分 -->
-<div style="width: 100%; height: 100%;background-color:  rgb(50,50,50); ">
-    <div class="blogBody">
+<div style="width: 100%; height: 1330px!important;background-color:  rgb(50,50,50); ">
+    <div class="blogBody" style="height: 1330px!important;">
         <%--        左侧部分--%>
-        <div style="width: 25%;float: left;height: 100%;background-color: #00a8c6;margin-left:15%">`
+        <div style="width: 25%;float: left;height: 100%;margin-left:15%">`
 
-            <div style="padding: 20px; height: 380px!important;">
+            <div style="padding: 20px; height: 380px!important;" >
                 <div class="layui-row layui-col-space15">
                     <div class="layui-col-md12">
-                        <div class="layui-card" style="height: 380px!important;">
+                        <div class="layui-card" style="height: 380px!important;width:304px!important;">
                             <%--                            头像--%>
                             <div class="layui-card-header" style="height: 150px!important;">
                                 <img src="../layui/images/BlogHead.png"
-                                     style="width: 90px;height: 90px;border-radius: 45px;margin-left:110px;margin-top:15px">
-                                <span style="font-size: 20px;width: 30px;height: 20px;margin-left:130px;">Belief</span>
+                                     style="width: 90px;height: 90px;border-radius: 45px;margin-left:100px;margin-top:15px">
+                                <span style="font-size: 20px;width: 30px;height: 20px;margin-left:120px;">Belief</span>
                             </div>
                             <%--                            显示--%>
                             <div class="layui-card-body">
-                                <span style="margin-left: 110px;height: 25px;font-size:16px">我执着,故我在</span><br>
-                                <span style="margin-left: 85px;height: 25px;font-size: 14px;color: #3F3F3F">I persist,therefore I am</span>
+                                <span style="margin-left: 95px;height: 25px;font-size:16px">我执着,故我在</span><br>
+                                <span style="margin-left: 75px;height: 25px;font-size: 14px;color: #3F3F3F">I persist,therefore I am</span>
                                 <div class="layui-row" style="margin-left:60px;margin-top: 15px">
                                     <div class="layui-col-md4">
                                         <div class="grid-demo grid-demo-bg1">
@@ -152,26 +152,23 @@
                                         </div>
                                     </div>
                                 </div>
-                                <img src="../layui/images/tubiao.png" style="width: 280px;height: 60px;margin: 15px;">
+                                <img src="../layui/images/tubiao.png" style="width: 280px;height: 60px;margin-top: 15px;">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-<%--            <dd><a href="">首页</a></dd>--%>
-<%--            <dd><a href="">友情链接</a></dd>--%>
-<%--            <dd><a href="">提交记录</a></dd>--%>
-<%--            <dd><a href="">留言板块</a></dd>--%>
-<%--            <dd><a href="">关于本站</a></dd>--%>
 
-            <div style="padding: 20px; height: 380px!important;">
+<%--            博客导航--%>
+            <div style="padding: 20px ; height: 380px!important;">
                 <div class="layui-col-md12">
-                    <div class="layui-card"  style="height: 380px!important;">
+                    <div class="layui-card"  style="height: 380px!important;width:304px!important">
                         <div class="layui-card-header">博客导航</div>
                         <div class="layui-card-body">
                             <ul class="cbdh" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
                                 <li class="layui-nav-item"><a href="">首页</a></li>
-                                <li class="layui-nav-item"><a href="">友情链接</a></li>
+                                <li class="layui-nav-item"><a href="">CSDN</a></li>
+                                <li class="layui-nav-item"><a href="">Github</a></li>
                                 <li class="layui-nav-item"><a href="">提交记录</a></li>
                                 <li class="layui-nav-item"><a href="">留言板块</a></li>
                                 <li class="layui-nav-item"><a href="">留言板块</a></li>
@@ -180,9 +177,30 @@
                     </div>
                 </div>
             </div>
+<%--            文章分类--%>
+            <div style="padding: 20px ; height: 380px!important;">
+                <div class="layui-col-md12">
+                    <div class="layui-card"  style="height: 380px!important;width:304px!important">
+                        <div class="layui-card-header">博客导航</div>
+                        <div class="layui-card-body">
+                            <ul class="wzfl" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
+                                <li class="layui-nav-item"><a href="">考研数据结构</a></li>
+                                <li class="layui-nav-item"><a href="">javaEE</a></li>
+                                <li class="layui-nav-item"><a href="">SSM</a></li>
+                                <li class="layui-nav-item"><a href="">NOSQL</a></li>
+                                <li class="layui-nav-item"><a href="">Vue.js</a></li>
+                                <li class="layui-nav-item"><a href="">前端基础</a></li>
+                                <li class="layui-nav-item"><a href="">算法</a></li>
+                                <li class="layui-nav-item"><a href="">SQL数据库</a></li>
+                                <li class="layui-nav-item"><a href="">生活小趣事</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     <%--        右侧部分--%>
-    <div style="padding:0 20px; height: 100%;width: 45%;background-color: #b6a3a3;float: left">
+    <div style="padding:20px 0; height: 100%;width: 45%;background-color: #b6a3a3;float: left">
         <div class="layui-row layui-col-space15" style="padding-top: 20px">
             <div class="layui-col-md12">
                 <div class="layui-card" style="height:100px !important;padding: 10px 10px!important;">

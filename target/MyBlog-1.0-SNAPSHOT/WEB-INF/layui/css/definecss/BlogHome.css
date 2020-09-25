@@ -98,9 +98,12 @@
 .cbdh{
 	width:270px!important;
 }
-.cbdh>li{
+.wzfl>li,.cbdh>li{
 	background-color: #FFFFFC!important;
 	font-family: KaiTi!important;
 	line-height: 50px;
 	font-size: 16px;
+}
+.wzfl{
+	width:430px!important;
 }
