@@ -7,6 +7,7 @@
 --%>
 <%@page deferredSyntaxAllowedAsLiteral="true" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -35,28 +36,41 @@
         layui.use('element', function () {
             var element = layui.element;
         });
-        var testEditor;
-        $(function () {
-            testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
-                htmlDecode: "style,script,iframe",
-                emoji: true,
-                taskList: true,
-                tocm: true,
-                tocTitle: "目录",
-                tex: true, // 默认不解析
-                flowChart: true, // 默认不解析
-                sequenceDiagram: true, // 默认不解析
-                codeFold: true
-            });
+        // var testEditor;
+        // $(function () {
+        //     testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+        //         htmlDecode: "style,script,iframe",
+        //         emoji: true,
+        //         taskList: true,
+        //         tocm: true,
+        //         tocTitle: "目录",
+        //         tex: true, // 默认不解析
+        //         flowChart: true, // 默认不解析
+        //         sequenceDiagram: true, // 默认不解析
+        //         codeFold: true
+        //     });
+        //
+        //     var reg = /<[^<>]+>/g;
+        //     // var zz=new RegExp(reg);
+        //     var str = $("#doc-content").text();
+        //     str = str.replace(reg, '');
+        //     // zz.exec(str);
+        //     $("#doc-content").html('');
+        //     $("#doc-content").text("" + str);
+        // });
 
-            var reg = /<[^<>]+>/g;
-            // var zz=new RegExp(reg);
-            var str = $("#doc-content").text();
-            str = str.replace(reg, '');
-            // zz.exec(str);
-            $("#doc-content").html('');
-            $("#doc-content").text("" + str);
-        });
+        $(function(){
+             var div= $("div[name='showblog']")
+            for(var i=1;i<div.length;i++){
+                div[i].style.marginTop=100+"px";
+            }
+        })
+        function deleteBlog() {
+            //传参到form表单隐藏的input标签里面去
+            console.log($("input").val());
+            // form表单提交
+             document.getElementById("deleteit").submit();
+        }
     </script>
 </head>
 <body style="overflow: auto;min-width:1800px;">
@@ -116,9 +130,9 @@
 <div style="width: 100%; height: 1330px!important;background-color:  rgb(50,50,50); ">
     <div class="blogBody" style="height: 1330px!important;">
         <%--        左侧部分--%>
-        <div style="width: 25%;float: left;height: 100%;margin-left:15%">`
+        <div style="width: 25%;float: left;height: 1330px;margin-left:15%">`
 
-            <div style="padding: 20px; height: 380px!important;" >
+            <div style="padding: 20px; height: 380px!important;">
                 <div class="layui-row layui-col-space15">
                     <div class="layui-col-md12">
                         <div class="layui-card" style="height: 380px!important;width:304px!important;">
@@ -152,20 +166,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <img src="../layui/images/tubiao.png" style="width: 280px;height: 60px;margin-top: 15px;">
+                                <img src="../layui/images/tubiao.png"
+                                     style="width: 280px;height: 60px;margin-top: 15px;">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-<%--            博客导航--%>
+            <%--            博客导航--%>
             <div style="padding: 20px ; height: 380px!important;">
                 <div class="layui-col-md12">
-                    <div class="layui-card"  style="height: 380px!important;width:304px!important">
+                    <div class="layui-card" style="height: 380px!important;width:304px!important">
                         <div class="layui-card-header">博客导航</div>
                         <div class="layui-card-body">
-                            <ul class="cbdh" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
+                            <ul class="cbdh" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline"
+                                lay-filter="demo">
                                 <li class="layui-nav-item"><a href="">首页</a></li>
                                 <li class="layui-nav-item"><a href="">CSDN</a></li>
                                 <li class="layui-nav-item"><a href="">Github</a></li>
@@ -177,13 +193,14 @@
                     </div>
                 </div>
             </div>
-<%--            文章分类--%>
+            <%--            文章分类--%>
             <div style="padding: 20px ; height: 380px!important;">
                 <div class="layui-col-md12">
-                    <div class="layui-card"  style="height: 380px!important;width:304px!important">
+                    <div class="layui-card" style="height: 380px!important;width:304px!important">
                         <div class="layui-card-header">博客导航</div>
                         <div class="layui-card-body">
-                            <ul class="wzfl" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline" lay-filter="demo">
+                            <ul class="wzfl" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline"
+                                lay-filter="demo">
                                 <li class="layui-nav-item"><a href="">考研数据结构</a></li>
                                 <li class="layui-nav-item"><a href="">javaEE</a></li>
                                 <li class="layui-nav-item"><a href="">SSM</a></li>
@@ -199,86 +216,96 @@
                 </div>
             </div>
         </div>
-    <%--        右侧部分--%>
-    <div style="padding:20px 0; height: 100%;width: 45%;background-color: #b6a3a3;float: left">
-        <div class="layui-row layui-col-space15" style="padding-top: 20px">
-            <div class="layui-col-md12">
-                <div class="layui-card" style="height:100px !important;padding: 10px 10px!important;">
-                    <div class="layui-card-header"
-                         style="line-height: 24px!important;height: 24px;">${blog[0].btitle}</div>
-                    <div class="layui-card-body" style="padding:5px 10px;">
-                        <div id="doc-content" name="doc-content">
-                            <!-- 书写与实时显示的textarea -->
-                            <textarea style="display:none;"
-                                      placeholder="markdown语言">${blog[0].bcontext}</textarea>
+        <%--        右侧部分--%>
+        <div style="padding:20px 0; height: 1290px;width: 45%;float: left">
+
+            <c:forEach items="${blog}" var="blog" varStatus="s">
+                <div name="showblog" class="layui-row layui-col-space15" style="padding-top: 20px;">
+                    <div class="layui-col-md12">
+                        <div class="layui-card" style="height:100px !important;padding: 10px 10px!important;">
+                            <span style="display: none">${s.index}</span>
+                            <div class="layui-card-header" style="line-height: 24px!important;height: 24px;width: 95%">
+                                    ${blog.btitle}
+                                <span id="delete" onclick="deleteBlog()"style="display: inline-block;width: 5%;float: right">删除</span>
+                                <input id="deleteit" action="/delete" style="display: none" method="post">
+                                    <input name="bno" type="text">${blog.bno}</input>
+                                </form>
+                            </div>
+                            <div class="layui-card-body" style="padding:5px 10px;">
+                                <div class="doc-content" name="doc-content">
+                                    <!-- 书写与实时显示的textarea -->
+                                        <%--                            <textarea style="display:none;"--%>
+                                        <%--                                      placeholder="markdown语言">${blog[0].digest}</textarea>--%>
+                                        ${blog.digest}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div></br>
+            </c:forEach>
+        </div>
+    </div>
+    <!-- 主体部分完结 -->
+    <div class="foot">
+        <div class="foot-ass">
+            <div>
+                <div class="layui-row ">
+                    <!-- 致敬还在写博客的我们! -->
+                    <div class="layui-col-xs4" style="border-right:  #3F3F3F 1px solid;">
+                        <div class="grid-demo grid-demo-bg1 ">
+                            <a class="foot-zise1">致敬还在写博客的我们!</a>
+                        </div>
+                    </div>
+                    <!-- 联系方式 -->
+                    <div class="layui-col-xs8 ">
+                        <div class="grid-demo">
+                            <div class="layui-row">
+                                <div class="layui-col-md4 ass">
+                                    <div class="grid-demo grid-demo-bg1">
+                                        <a href="">CSDN</a><br/>
+                                        <img src="../layui/images/CSDN.png"/>
+                                    </div>
+                                </div>
+                                <div class="layui-col-md4 ass">
+                                    <div class="grid-demo">
+                                        <a href="">QQ</a><br/>
+                                        <img src="../layui/images/Email.png"/>
+                                    </div>
+                                </div>
+                                <div class="layui-col-md4 ass">
+                                    <div class="grid-demo grid-demo-bg1">
+                                        <a href="">Github</a><br/>
+                                        <img src="../layui/images/Github.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foot-bottom">
+            <div>
+                <div class="layui-row ">
+                    <div class="layui-col-md4">
+                        <div class="grid-demo grid-demo-bg1">
+                            <a>Email:749958162@qq.com</a>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="grid-demo grid-demo-bg1">
+                            <a>Power By:Belief</a>
+                        </div>
+                    </div>
+                    <div class="layui-col-md4">
+                        <div class="grid-demo grid-demo-bg1">
+                            <a href="">Building:2020年9月21日20:10:33</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- 主体部分完结 -->
-<div class="foot">
-    <div class="foot-ass">
-        <div>
-            <div class="layui-row ">
-                <!-- 致敬还在写博客的我们! -->
-                <div class="layui-col-xs4" style="border-right:  #3F3F3F 1px solid;">
-                    <div class="grid-demo grid-demo-bg1 ">
-                        <a class="foot-zise1">致敬还在写博客的我们!</a>
-                    </div>
-                </div>
-                <!-- 联系方式 -->
-                <div class="layui-col-xs8 ">
-                    <div class="grid-demo">
-                        <div class="layui-row">
-                            <div class="layui-col-md4 ass">
-                                <div class="grid-demo grid-demo-bg1">
-                                    <a href="">CSDN</a><br/>
-                                    <img src="../layui/images/CSDN.png"/>
-                                </div>
-                            </div>
-                            <div class="layui-col-md4 ass">
-                                <div class="grid-demo">
-                                    <a href="">QQ</a><br/>
-                                    <img src="../layui/images/Email.png"/>
-                                </div>
-                            </div>
-                            <div class="layui-col-md4 ass">
-                                <div class="grid-demo grid-demo-bg1">
-                                    <a href="">Github</a><br/>
-                                    <img src="../layui/images/Github.png"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="foot-bottom">
-        <div>
-            <div class="layui-row ">
-                <div class="layui-col-md4">
-                    <div class="grid-demo grid-demo-bg1">
-                        <a>Email:749958162@qq.com</a>
-                    </div>
-                </div>
-                <div class="layui-col-md4">
-                    <div class="grid-demo grid-demo-bg1">
-                        <a>Power By:Belief</a>
-                    </div>
-                </div>
-                <div class="layui-col-md4">
-                    <div class="grid-demo grid-demo-bg1">
-                        <a href="">Building:2020年9月21日20:10:33</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 </div>
 </body>
 </html>

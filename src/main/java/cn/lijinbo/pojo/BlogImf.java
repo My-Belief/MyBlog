@@ -18,7 +18,15 @@ public class BlogImf {
 
     private String status;
 
+    private String digest;
 
+    public String getDigest() {
+        return digest;
+    }
+
+    public void setDigest(String digest) {
+        this.digest = digest;
+    }
 
     public String getStatus() {
         return status;
@@ -68,21 +76,33 @@ public class BlogImf {
         this.bcontext = bcontext == null ? null : bcontext.trim();
     }
 
-    public BlogImf(Integer bno, String btitle, Date buildTime, Integer typeid, String bcontext, String status) {
+    public BlogImf(Integer bno, String btitle, Date buildTime, Integer typeid, String status, String digest) {
+        this.bno = bno;
+        this.btitle = btitle;
+        this.buildTime = buildTime;
+        this.typeid = typeid;
+        this.status = status;
+        this.digest = digest;
+    }
+
+
+    public BlogImf(Integer bno, String btitle, Date buildTime, Integer typeid, String bcontext, String status, String digest) {
         this.bno = bno;
         this.btitle = btitle;
         this.buildTime = buildTime;
         this.typeid = typeid;
         this.bcontext = bcontext;
         this.status = status;
+        this.digest = digest;
     }
 
-    public BlogImf(String btitle, Date buildTime, Integer typeid, String bcontext, String status) {
+    public BlogImf(String btitle, Date buildTime, Integer typeid, String bcontext, String status, String digest) {
         this.btitle = btitle;
         this.buildTime = buildTime;
         this.typeid = typeid;
         this.bcontext = bcontext;
         this.status = status;
+        this.digest = digest;
     }
 
     public BlogImf() {

@@ -29,20 +29,28 @@ public class BlogManageController {
         this.sabs = sabs;
     }
 
+    @RequestMapping("/delete")
+    public String deleteBlog(Integer bno,Model model){
+        sabs.deleteByBno(bno);
+        List<BlogImf> bf= sabs.ShowAllBlog();
+        model.addAttribute("blog",bf);
+        return "allblog";
+    }
+
     @RequestMapping("/allblog")
     public String ShowAllBlog(Model model){
 
         List<BlogImf> bf=sabs.ShowAllBlog();
-        System.out.println(bf.get(0).getBuildTime());
+//        System.out.println(bf.get(0).getBuildTime());
         model.addAttribute("blog",bf);
         return "allblog";
     }
 
     @RequestMapping("/commit")
     @ResponseBody
-    public String commit(String btitle,String status,String bcontext){
+    public String commit(String btitle,String status,String bcontext,String digest){
         System.out.println(btitle+" "+status+" "+bcontext);
-        BlogImf bi=new BlogImf(btitle,new Date(),1,bcontext, status);
+        BlogImf bi=new BlogImf(btitle,new Date(),1,bcontext, status,digest);
             sabs.publishBlog(bi);
          return "allblog";
     }

@@ -84,7 +84,7 @@
 	border-radius: 8px;
 	/*margin-left: 200px;*/
 }
-#doc-content{
+.doc-content{
 	display:-webkit-box;
 	-webkit-box-orient:vertical;
 	-webkit-line-clamp:3;//控制行数
@@ -106,4 +106,7 @@
 }
 .wzfl{
 	width:430px!important;
+}
+.wzfl>li{
+	line-height: 35px!important;
 }

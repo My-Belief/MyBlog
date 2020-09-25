@@ -12,4 +12,5 @@ public interface BlogImfMapper {
 
     void deleteByBno(Integer bno);
 
+
 }
