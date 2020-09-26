@@ -29,6 +29,7 @@ public class BlogManageController {
         this.sabs = sabs;
     }
 
+//    根据编号删除博客
     @RequestMapping("/delete")
     public String deleteBlog(Integer bno,Model model){
         sabs.deleteByBno(bno);
@@ -37,6 +38,7 @@ public class BlogManageController {
         return "allblog";
     }
 
+//    查询所有博客
     @RequestMapping("/allblog")
     public String ShowAllBlog(Model model){
 
@@ -46,15 +48,22 @@ public class BlogManageController {
         return "allblog";
     }
 
+//    写博客
     @RequestMapping("/commit")
-    @ResponseBody
     public String commit(String btitle,String status,String bcontext,String digest){
         System.out.println(btitle+" "+status+" "+bcontext);
         BlogImf bi=new BlogImf(btitle,new Date(),1,bcontext, status,digest);
-            sabs.publishBlog(bi);
-         return "allblog";
+        sabs.publishBlog(bi);
+        return "redirect:/allblog";
     }
 
+    @RequestMapping("/showArticle")
+    public String showArticle(Integer bno,Model model){
+        System.out.println(bno);
+        BlogImf blogImf=sabs.showArticle(bno);
+        model.addAttribute("blog",blogImf);
+        return "showDetailBlog";
+    }
     @RequestMapping(value = "/uploadImg", method = RequestMethod.POST)
     @ResponseBody
     public String uploadFile(HttpServletRequest request, HttpServletResponse response,

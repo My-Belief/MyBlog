@@ -35,4 +35,9 @@ public class BlogManageServiceImpl implements BlogManageService {
     public void deleteByBno(Integer bno) {
         blm.deleteByBno(bno);
     }
+
+    @Override
+    public BlogImf showArticle(Integer bno) {
+        return blm.showArticleByBno(bno);
+    }
 }

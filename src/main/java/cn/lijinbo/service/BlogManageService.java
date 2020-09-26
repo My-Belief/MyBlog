@@ -10,4 +10,6 @@ public interface BlogManageService {
     void publishBlog(BlogImf blogImf);
 
     void deleteByBno(Integer bno);
+
+    BlogImf showArticle(Integer bno);
 }

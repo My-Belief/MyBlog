@@ -65,12 +65,8 @@
                 div[i].style.marginTop=100+"px";
             }
         })
-        function deleteBlog() {
-            //传参到form表单隐藏的input标签里面去
-            console.log($("input").val());
-            // form表单提交
-             document.getElementById("deleteit").submit();
-        }
+
+
     </script>
 </head>
 <body style="overflow: auto;min-width:1800px;">
@@ -108,19 +104,19 @@
             </dl>
         </li>
 
-        <li class="layui-nav-item" lay-unselect="">
+        <li class="layui-nav-item" lay-unselect="" style="display: none;">
             <a href="javascript:;"><img src="../layui/images/default.png" class="layui-nav-img">未登录</a>
             <dl class="layui-nav-child">
                 <dd><a href="/login">登录</a></dd>
             </dl>
         </li>
 
-        <li class="layui-nav-item" lay-unselect="" style="display: none;">
+        <li class="layui-nav-item" lay-unselect="" >
             <a href="javascript:;"><img src="../layui/images/BlogHead.png" class="layui-nav-img">我</a>
             <dl class="layui-nav-child">
-                <dd><a href="javascript:;">修改信息</a></dd>
-                <dd><a href="javascript:;">安全管理</a></dd>
-                <dd><a href="javascript:;">退了</a></dd>
+                <dd><a href="javascript:;">博客管理</a></dd>
+                <dd><a href="/markdown">MarkDown编辑器</a></dd>
+                <dd><a href="/login">退了</a></dd>
             </dl>
         </li>
     </ul>
@@ -223,16 +219,18 @@
                 <div name="showblog" class="layui-row layui-col-space15" style="padding-top: 20px;">
                     <div class="layui-col-md12">
                         <div class="layui-card" style="height:100px !important;padding: 10px 10px!important;">
-                            <span style="display: none">${s.index}</span>
-                            <div class="layui-card-header" style="line-height: 24px!important;height: 24px;width: 95%">
-                                    ${blog.btitle}
-                                <span id="delete" onclick="deleteBlog()"style="display: inline-block;width: 5%;float: right">删除</span>
-                                <input id="deleteit" action="/delete" style="display: none" method="post">
-                                    <input name="bno" type="text">${blog.bno}</input>
+                            <div  class="layui-card-header" style="line-height: 24px!important;height: 24px;width: 95%">
+                                <span class="showone">${blog.btitle}</span>
+<%--                                <form action="/showArticle" style="display: none" method="post">--%>
+<%--                                    <input name="bno" type="text" value="${blog.bno}>--%>
+<%--                                </form>--%>
+                                <span class="delete" id="delete"  style="display: inline-block;width: 5%;float: right">删除</span>
+                                <form  action="/delete" style="display: none" method="post">
+                                    <input name="bno" type="text" value="${blog.bno}">
                                 </form>
                             </div>
                             <div class="layui-card-body" style="padding:5px 10px;">
-                                <div class="doc-content" name="doc-content">
+                                <div  class="doc-content" name="doc-content">
                                     <!-- 书写与实时显示的textarea -->
                                         <%--                            <textarea style="display:none;"--%>
                                         <%--                                      placeholder="markdown语言">${blog[0].digest}</textarea>--%>
@@ -307,6 +305,31 @@
         </div>
     </div>
 </div>
+<script>
+
+    $(function(){
+        const  span=$(".delete");
+        const  showone=$(".showone");
+
+        for(let i=0;i<span.length;i++){
+            span.eq(i).index(i);
+            showone.eq(i).index(i);
+            span.eq(i).click(function(){
+                console.log($(this).next().children("input").val());
+                $(this).next().submit();
+            });
+
+            showone.eq(i).click(function(){
+                $(this).next().next().attr("action","/showArticle")
+                console.log($(this).next().next().children("input").val());
+                $(this).next().next().submit();
+            })
+
+        }
+    })
+
+
+</script>
 </body>
 </html>
 

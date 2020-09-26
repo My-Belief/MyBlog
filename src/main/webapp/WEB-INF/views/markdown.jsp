@@ -28,7 +28,7 @@
                 syncScrolling: "single", //单滚动条
                 path: "../editormd/lib/", //依赖的包路径
                 // previewTheme : "dark",
-                markdown: "mdsadasda", //重置md内的文本
+                markdown: "", //重置md内的文本
                 // editorTheme: "pastel-on-dark",
                 codeFold: true,
                 tex: true, // 开启科学公式TeX语言支持，默认关闭
@@ -66,6 +66,8 @@
                     //this.resize("100%", 640);
                 }
             });
+            // $("input[name='digest']").val(contentEditor.getMarkdown());
+
             //   contentEditor.gotoLine(90);//转到第90行
             //   contentEditor.show();//显示编辑器
             //   contentEditor.hide();//隐藏编辑器
@@ -87,10 +89,16 @@
         function ExportData() {
             //传参到form表单隐藏的input标签里面去
             $("input[name='status']").val(0);
-            console.log($("input[name='status']").val()+""+$("input[name='btitle']").val());
+            // console.log($("input[name='status']").val()+""+$("input[name='btitle']").val());
 
-
+            $("input[name='digest']").val(contentEditor.getMarkdown().substr(0,200).replace("^[^\u4E00-\u9FA5A-Za-z0-9]+$",""));
+            console.log( $("input[name='digest']").val());
             // form表单提交
+            document.getElementById("exportForm").submit();
+        }
+
+        function publish() {
+            $("input[name='digest']").val(contentEditor.getMarkdown().substr(0,200).replace("^[^\u4E00-\u9FA5A-Za-z0-9]+$",""));
             document.getElementById("exportForm").submit();
         }
     </script>
@@ -104,10 +112,11 @@
                 <input type="text" name="btitle" style="height: 25px;width:83%;min-width:20% ;" placeholder="欢迎使用markdown编辑器!"/>
                 <input type="text" name="status" style="display: none" value="1">
                 <input type="button" style="line-height:30px;border: 1px red solid;border-radius: 4px;width: 5%;" value="保存草稿" onclick="ExportData()"/>
-                <input type="submit" style="width: 5%;line-height:30px;background-color: red;border: 0px ;border-radius: 4px;color: #FFFFFC;" value="发布博客"/>
+                <input type="button" style="width: 5%;line-height:30px;background-color: red;border: 0px ;border-radius: 4px;color: #FFFFFC;" value="发布博客" onclick="publish()"/>
             </div>
 
         </div>
+        <input name="digest" value="" type="text" style="display: none">
         <div id="md-content" style="z-index: 1 !important;width: 100%;">
             <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
             <!-- 用于后端获取md稳当内容，Java中：request.getParameter("my-editormd-html-code")。 -->

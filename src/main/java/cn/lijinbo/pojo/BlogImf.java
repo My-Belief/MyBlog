@@ -105,6 +105,7 @@ public class BlogImf {
         this.digest = digest;
     }
 
+
     public BlogImf() {
     }
 }

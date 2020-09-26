@@ -1,13 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2020/9/25 0025
-  Time: 12:50
+  Date: 2020/9/22 0022
+  Time: 15:06
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page deferredSyntaxAllowedAsLiteral="true" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -49,15 +49,8 @@
                 sequenceDiagram: true, // 默认不解析
                 codeFold: true
             });
-
-            var reg = /<[^<>]+>/g;
-            // var zz=new RegExp(reg);
-            var str = $("#doc-content").text();
-            str = str.replace(reg, '');
-            // zz.exec(str);
-            $("#doc-content").html('');
-            $("#doc-content").text(str);
         });
+
     </script>
 </head>
 <body style="overflow: auto;min-width:1800px;">
@@ -114,27 +107,113 @@
 </div>
 <!-- 头部分完结 -->
 <!-- 主体部分 -->
-<div style="width: 100%; height: 100%;background-color:  rgb(50,50,50); ">
-    <div class="blogBody">
-        <div style="width: 25%;float: left;height: 100%;background-color: #00a8c6;margin-left:15%">
-            `           hahahahahah
-        </div>
-        <div style="padding:0 20px; height: 100%;width: 45%;background-color: #ff0000;float: left">
-            <div class="layui-row layui-col-space15" style="padding-top: 20px">
-                <div class="layui-col-md12">
-                    <div class="layui-card" style="height:100px !important;padding: 10px 10px!important;">
-                        <div class="layui-card-header"
-                             style="line-height: 24px!important;height: 24px">${blog[0].btitle}</div>
-                        <div class="layui-card-body" style="padding:5px 10px;">
-                            <div id="doc-content" name="doc-content">
-                                <!-- 书写与实时显示的textarea -->
-                                <textarea style="display:none;"
-                                          placeholder="markdown语言">${blog[0].bcontext}</textarea>
+<div style="width: 100%; height: 1330px!important;background-color:  rgb(50,50,50); ">
+    <div class="blogBody" style="height: 1330px!important;">
+        <%--        左侧部分--%>
+        <div style="width: 25%;float: left;height: 1330px;margin-left:15%">`
+
+            <div style="padding: 20px; height: 380px!important;">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md12">
+                        <div class="layui-card" style="height: 380px!important;width:304px!important;">
+                            <%--                            头像--%>
+                            <div class="layui-card-header" style="height: 150px!important;">
+                                <img src="../layui/images/BlogHead.png"
+                                     style="width: 90px;height: 90px;border-radius: 45px;margin-left:100px;margin-top:15px">
+                                <span style="font-size: 20px;width: 30px;height: 20px;margin-left:120px;">Belief</span>
+                            </div>
+                            <%--                            显示--%>
+                            <div class="layui-card-body">
+                                <span style="margin-left: 95px;height: 25px;font-size:16px">我执着,故我在</span><br>
+                                <span style="margin-left: 75px;height: 25px;font-size: 14px;color: #3F3F3F">I persist,therefore I am</span>
+                                <div class="layui-row" style="margin-left:60px;margin-top: 15px">
+                                    <div class="layui-col-md4">
+                                        <div class="grid-demo grid-demo-bg1">
+                                            <span>98</span><br/>
+                                            <span>博客</span>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-md4">
+                                        <div class="grid-demo">
+                                            <span>10</span><br/>
+                                            <span>分类</span>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-md4">
+                                        <div class="grid-demo grid-demo-bg1">
+                                            <span>443</span><br/>
+                                            <span>标签</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="../layui/images/tubiao.png"
+                                     style="width: 280px;height: 60px;margin-top: 15px;">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <%--            博客导航--%>
+            <div style="padding: 20px ; height: 380px!important;">
+                <div class="layui-col-md12">
+                    <div class="layui-card" style="height: 380px!important;width:304px!important">
+                        <div class="layui-card-header">博客导航</div>
+                        <div class="layui-card-body">
+                            <ul class="cbdh" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline"
+                                lay-filter="demo">
+                                <li class="layui-nav-item"><a href="">首页</a></li>
+                                <li class="layui-nav-item"><a href="">CSDN</a></li>
+                                <li class="layui-nav-item"><a href="">Github</a></li>
+                                <li class="layui-nav-item"><a href="">提交记录</a></li>
+                                <li class="layui-nav-item"><a href="">留言板块</a></li>
+                                <li class="layui-nav-item"><a href="">留言板块</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%--            文章分类--%>
+            <div style="padding: 20px ; height: 380px!important;">
+                <div class="layui-col-md12">
+                    <div class="layui-card" style="height: 380px!important;width:304px!important">
+                        <div class="layui-card-header">博客导航</div>
+                        <div class="layui-card-body">
+                            <ul class="wzfl" class="layui-nav layui-nav-tree layui-bg-cyan layui-inline"
+                                lay-filter="demo">
+                                <li class="layui-nav-item"><a href="">考研数据结构</a></li>
+                                <li class="layui-nav-item"><a href="">javaEE</a></li>
+                                <li class="layui-nav-item"><a href="">SSM</a></li>
+                                <li class="layui-nav-item"><a href="">NOSQL</a></li>
+                                <li class="layui-nav-item"><a href="">Vue.js</a></li>
+                                <li class="layui-nav-item"><a href="">前端基础</a></li>
+                                <li class="layui-nav-item"><a href="">算法</a></li>
+                                <li class="layui-nav-item"><a href="">SQL数据库</a></li>
+                                <li class="layui-nav-item"><a href="">生活小趣事</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--        右侧部分--%>
+        <div class="right" style="padding:20px 0; height: 1330px;width: 60%;float: left;">
+
+                <div name="showblog" class="layui-row layui-col-space15" style="padding-top: 20px;">
+                    <div class="layui-col-md12">
+                        <div class="layui-card" style="height:1230px !important;padding: 10px 10px!important;">
+                            <div class="layui-card-header" style="line-height: 24px!important;height: 24px;width: 95%">
+                                <span class="showone">${blog.btitle}</span>
+                            </div>
+                            <div class="layui-card-body" style="padding:5px 10px;overflow-x:hidden; overflow-y:scroll;height:1230px!important;">
+                                <div id="doc-content"  name="doc-content">
+                                    <!-- 书写与实时显示的textarea -->
+                                    <textarea placeholder="markdown语言">${blog.bcontext}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
     <!-- 主体部分完结 -->
@@ -199,5 +278,11 @@
         </div>
     </div>
 </div>
+<script>
+    // $(function(){
+    //     $(".right").style.height=$("#doc-content").height()+"px";
+    // })
+</script>
 </body>
 </html>
+

@@ -9,6 +9,15 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="digest" property="digest" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="BaseResultMap1" type="cn.lijinbo.pojo.BlogImf" >
+    <id column="bno" property="bno" jdbcType="INTEGER" />
+    <result column="btitle" property="btitle" jdbcType="VARCHAR" />
+    <result column="bcontext" property="bcontext" jdbcType="LONGVARCHAR" />
+    <result column="build_time" property="buildTime" jdbcType="DATE" />
+    <result column="typeid" property="typeid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="digest" property="digest" jdbcType="VARCHAR" />
+  </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="cn.lijinbo.pojo.BlogImf" extends="BaseResultMap" >
     <result column="bcontext" property="bcontext" jdbcType="LONGVARCHAR" />
   </resultMap>
@@ -24,4 +33,8 @@
   <delete id="deleteByBno" parameterType="Integer">
         delete from tb_blog_information where bno=#{bno}
   </delete>
+
+  <select id="showArticleByBno" parameterType="Integer" resultMap="BaseResultMap1">
+        select * from tb_blog_information where bno=#{bno}
+  </select>
 </mapper>

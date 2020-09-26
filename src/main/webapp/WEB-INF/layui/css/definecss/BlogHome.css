@@ -93,6 +93,7 @@
 	text-overflow: ellipsis;
 	padding: 0;
 	overflow-y:hidden;
+	overflow-x:hidden;
 	background-color:#f8f8f8;
 }
 .cbdh{
