@@ -7,7 +7,7 @@
 --%>
 <%@page deferredSyntaxAllowedAsLiteral="true" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -32,40 +32,18 @@
     <script src="../editormd/lib/sequence-diagram.min.js"></script>
     <script src="../editormd/lib/flowchart.min.js"></script>
     <script src="../editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="../layui/layui.all.js"></script>
+    <script src="../layui/layui.js"></script>
     <script>
         layui.use('element', function () {
             var element = layui.element;
         });
-        // var testEditor;
-        // $(function () {
-        //     testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
-        //         htmlDecode: "style,script,iframe",
-        //         emoji: true,
-        //         taskList: true,
-        //         tocm: true,
-        //         tocTitle: "目录",
-        //         tex: true, // 默认不解析
-        //         flowChart: true, // 默认不解析
-        //         sequenceDiagram: true, // 默认不解析
-        //         codeFold: true
-        //     });
-        //
-        //     var reg = /<[^<>]+>/g;
-        //     // var zz=new RegExp(reg);
-        //     var str = $("#doc-content").text();
-        //     str = str.replace(reg, '');
-        //     // zz.exec(str);
-        //     $("#doc-content").html('');
-        //     $("#doc-content").text("" + str);
-        // });
-
-        $(function(){
-             var div= $("div[name='showblog']")
-            for(var i=1;i<div.length;i++){
-                div[i].style.marginTop=100+"px";
+        $(function () {
+            var div = $("div[name='showblog']")
+            for (var i = 1; i < div.length; i++) {
+                div[i].style.marginTop = 100 + "px";
             }
         })
-
 
     </script>
 </head>
@@ -111,7 +89,7 @@
             </dl>
         </li>
 
-        <li class="layui-nav-item" lay-unselect="" >
+        <li class="layui-nav-item" lay-unselect="">
             <a href="javascript:;"><img src="../layui/images/BlogHead.png" class="layui-nav-img">我</a>
             <dl class="layui-nav-child">
                 <dd><a href="javascript:;">博客管理</a></dd>
@@ -219,30 +197,28 @@
                 <div name="showblog" class="layui-row layui-col-space15" style="padding-top: 20px;">
                     <div class="layui-col-md12">
                         <div class="layui-card" style="height:100px !important;padding: 10px 10px!important;">
-                            <div  class="layui-card-header" style="line-height: 24px!important;height: 24px;width: 95%">
+                            <div class="layui-card-header" style="line-height: 24px!important;height: 24px;width: 95%">
                                 <span class="showone">${blog.btitle}</span>
-<%--                                <form action="/showArticle" style="display: none" method="post">--%>
-<%--                                    <input name="bno" type="text" value="${blog.bno}>--%>
-<%--                                </form>--%>
-                                <span class="delete" id="delete"  style="display: inline-block;width: 5%;float: right">删除</span>
-                                <form  action="/delete" style="display: none" method="post">
+                                <span class="delete" id="delete"
+                                      style="display: inline-block;width: 5%;float: right">删除</span>
+                                <form action="/delete" style="display: none" method="post">
                                     <input name="bno" type="text" value="${blog.bno}">
                                 </form>
                             </div>
                             <div class="layui-card-body" style="padding:5px 10px;">
-                                <div  class="doc-content" name="doc-content">
-                                    <!-- 书写与实时显示的textarea -->
-                                        <%--                            <textarea style="display:none;"--%>
-                                        <%--                                      placeholder="markdown语言">${blog[0].digest}</textarea>--%>
+                                <div class="doc-content" name="doc-content">
                                         ${blog.digest}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div></br>
+                </div>
+                </br>
             </c:forEach>
         </div>
+        <div id="demo10" style="margin-top: 50px;position: absolute;margin-left: 53%"></div>
     </div>
+
     <!-- 主体部分完结 -->
     <div class="foot">
         <div class="foot-ass">
@@ -306,21 +282,20 @@
     </div>
 </div>
 <script>
+    $(function () {
+        const span = $(".delete");
+        const showone = $(".showone");
 
-    $(function(){
-        const  span=$(".delete");
-        const  showone=$(".showone");
-
-        for(let i=0;i<span.length;i++){
+        for (let i = 0; i < span.length; i++) {
             span.eq(i).index(i);
             showone.eq(i).index(i);
-            span.eq(i).click(function(){
+            span.eq(i).click(function () {
                 console.log($(this).next().children("input").val());
                 $(this).next().submit();
             });
 
-            showone.eq(i).click(function(){
-                $(this).next().next().attr("action","/showArticle")
+            showone.eq(i).click(function () {
+                $(this).next().next().attr("action", "/showArticle")
                 console.log($(this).next().next().children("input").val());
                 $(this).next().next().submit();
             })
@@ -328,6 +303,25 @@
         }
     })
 
+    <%--layui.use(['laypage', 'layer'], function () {--%>
+    <%--    var laypage = layui.laypage--%>
+    <%--        , layer = layui.layer;--%>
+    <%--    //完整功能--%>
+    <%--    //自定义排版--%>
+    <%--    laypage.render({--%>
+    <%--        elem: 'demo10',--%>
+    <%--        count: ${blog.total},//这个是你的总页面--%>
+    <%--        curr: ${blog.pageNum},//这个是你当前的页数，设置好 页面跳转后他会自动选择对应的页码、也就是第几页的背景改变颜色--%>
+    <%--        limit: ${blog.size}//这个是每页面显示多少条，页面跳转后他会自动让下拉框里对应的值设为选中状态--%>
+    <%--        , layout: ['page', 'count'],--%>
+    <%--        jump:function (obj,first) {--%>
+    <%--            if(first){ return ; }--%>
+    <%--            var url=undefined;--%>
+    <%--            url+='?pageNum='+obj.curr;--%>
+    <%--            window.location.href="/allblog"+url;--%>
+    <%--        }--%>
+    <%--    });--%>
+    <%--});--%>
 
 </script>
 </body>

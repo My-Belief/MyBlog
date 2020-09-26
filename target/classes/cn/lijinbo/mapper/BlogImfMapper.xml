@@ -37,4 +37,5 @@
   <select id="showArticleByBno" parameterType="Integer" resultMap="BaseResultMap1">
         select * from tb_blog_information where bno=#{bno}
   </select>
+
 </mapper>

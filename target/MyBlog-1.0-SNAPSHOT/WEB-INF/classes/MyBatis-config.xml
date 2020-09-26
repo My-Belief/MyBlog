@@ -17,4 +17,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<package name="cn.lijinbo.mapper"/>
 
 	</typeAliases>
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+		</plugin>
+	</plugins>
 </configuration>

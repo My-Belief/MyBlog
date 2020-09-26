@@ -1,8 +1,10 @@
 package cn.lijinbo.controller;
 
 import cn.lijinbo.pojo.BlogImf;
+import cn.lijinbo.pojo.PageInfo;
 import cn.lijinbo.service.BlogManageService;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sound.sampled.Line;
 import java.io.File;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
@@ -41,11 +44,25 @@ public class BlogManageController {
 //    查询所有博客
     @RequestMapping("/allblog")
     public String ShowAllBlog(Model model){
-
+        PageHelper.startPage(1,8);
         List<BlogImf> bf=sabs.ShowAllBlog();
-//        System.out.println(bf.get(0).getBuildTime());
+        System.out.println("前-----------"+bf.get(1).getBtitle());
+//        PageInfo<BlogImf> page=new PageInfo<BlogImf>(bf);
+//        System.out.println("后-----------"+page.getList().get(1).getBtitle());
         model.addAttribute("blog",bf);
         return "allblog";
+    }
+
+    //    查询所有博客
+    @RequestMapping("/allblog/{pageNum}")
+    @ResponseBody
+    public String ShowAllBlog1(int pageNum, Model model){
+//        设置每一行的页数
+        PageHelper.startPage(pageNum,8);
+        List<BlogImf> bf=sabs.ShowAllBlog();
+        PageInfo<Line> page=new PageInfo<Line>(bf);
+        model.addAttribute("blog",page);
+        return "/allblog";
     }
 
 //    写博客

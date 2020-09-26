@@ -86,19 +86,20 @@
             // }); //TOC下拉菜单
         });
 
+        var reg=/\\|\/|\?|\？|\#|\*|\"|\“|\”|\'|\‘|\’|\<|\>|\{|\}|\[|\]|\【|\】|\：|\:|\、|\^|\$|\!|\~|\`|\|/g;
         function ExportData() {
             //传参到form表单隐藏的input标签里面去
             $("input[name='status']").val(0);
             // console.log($("input[name='status']").val()+""+$("input[name='btitle']").val());
 
-            $("input[name='digest']").val(contentEditor.getMarkdown().substr(0,200).replace("^[^\u4E00-\u9FA5A-Za-z0-9]+$",""));
+            $("input[name='digest']").val(contentEditor.getMarkdown().substr(0,200).replace(reg,""));
             console.log( $("input[name='digest']").val());
             // form表单提交
             document.getElementById("exportForm").submit();
         }
 
         function publish() {
-            $("input[name='digest']").val(contentEditor.getMarkdown().substr(0,200).replace("^[^\u4E00-\u9FA5A-Za-z0-9]+$",""));
+            $("input[name='digest']").val(contentEditor.getMarkdown().substr(0,200).replace(reg,""));
             document.getElementById("exportForm").submit();
         }
     </script>

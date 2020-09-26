@@ -1,6 +1,7 @@
 package cn.lijinbo.mapper;
 
 import cn.lijinbo.pojo.BlogImf;
+import cn.lijinbo.pojo.PageInfo;
 
 import java.util.List;
 

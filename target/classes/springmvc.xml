@@ -26,4 +26,5 @@
 			<bean class="cn.lijinbo.util.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
+
 </beans>
